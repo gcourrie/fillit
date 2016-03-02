@@ -6,7 +6,7 @@
 /*   By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/21 16:48:00 by gcourrie          #+#    #+#             */
-/*   Updated: 2016/01/18 15:28:20 by gcourrie         ###   ########.fr       */
+/*   Updated: 2016/01/25 17:33:39 by gcourrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,9 @@ int		algo_rec(t_map *maplist, char *str, int i, int x)
 	{
 		if (algo_rec(maplist, str, i + 1, 0) == 1)
 			return (1);
-		else
-		{
-			clear_form(maplist, x);
-			if (algo_rec(maplist, str, i, x + 1) == 1)
-				return (1);
-		}
+		clear_form(maplist, x, str, i);
+		if (algo_rec(maplist, str, i, x + 1) == 1)
+			return (1);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: hfouques <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 12:30:32 by hfouques          #+#    #+#             */
-/*   Updated: 2016/01/18 19:16:21 by gcourrie         ###   ########.fr       */
+/*   Updated: 2016/01/25 15:57:30 by gcourrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@ static int	ft_parse(char *entree, char *str)
 	int		fd;
 	int		ret;
 	char	*buffer;
+	int		i;
 
+	i = 0;
 	if (!(buffer = (char *)malloc(sizeof(char) * BUF_SIZE + 1)))
 		return (ft_parse_error(7));
-	if ((fd = open(entree, O_RDONLY)) != -1)
+	if ((fd = open(entree, O_RDONLY)) > -1)
 	{
 		while ((ret = read(fd, buffer, BUF_SIZE)) > 0)
 		{
@@ -66,10 +68,10 @@ static int	ft_parse(char *entree, char *str)
 				return (ft_parse_error(6));
 			if (ft_check_form(buffer, str) == 0)
 				return (ft_parse_error(5));
+			i++;
 		}
-		if (buffer[20] != '\0')
-			return (ft_parse_error(4));
-		if (close(fd) == -1 || ret < 0)
+		if (close(fd) == -1 || ret < 0 ||
+			buffer[20] != '\0' || (i == 0 && ret == 0))
 			return (ft_parse_error(4));
 		return (1);
 	}

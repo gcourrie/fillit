@@ -6,7 +6,7 @@
 #    By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 16:16:15 by gcourrie          #+#    #+#              #
-#    Updated: 2016/01/18 19:52:23 by gcourrie         ###   ########.fr        #
+#    Updated: 2016/02/18 21:51:45 by gcourrie         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -53,10 +53,8 @@ INC		=		$(addprefix -I,$(INC_PATH))
 
 all:			$(NAME)
 
-make2:
+$(NAME):		$(OBJ)
 				cd libft; $(MAKE) -f Makefile
-
-$(NAME):		make2 $(OBJ)
 				$(GCC) $(CFLAGS) $(INC) -o $(NAME) $(LIB_NAME) $(OBJ)
 
 $(OBJ_PATH)%.o:	$(SRC_PATH)%.c
@@ -75,4 +73,3 @@ fclean:			clean
 re:				fclean all
 
 .PHONY:			all clean fclean re
-

@@ -6,7 +6,7 @@
 /*   By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 17:28:58 by gcourrie          #+#    #+#             */
-/*   Updated: 2016/01/18 19:21:59 by gcourrie         ###   ########.fr       */
+/*   Updated: 2016/03/02 09:52:46 by gcourrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ void		algo_reso(char *str)
 	ret = NULL;
 	if (!(maplist = (t_map *)malloc(sizeof(t_map))))
 		return ;
-	maplist->size = ft_sqrt(ft_strlen(str)) * 3;
+	if (ft_strlen(str) == 1)
+		maplist->size = ft_sqrt(ft_strlen(str)) * 4;
+	else
+		maplist->size = ft_sqrt(ft_strlen(str)) * 3;
 	maplist->map = ft_table_creator(maplist->size);
 	while (algo_rec(maplist, str, 0, 0) == 1)
 	{

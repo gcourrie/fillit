@@ -6,7 +6,7 @@
 /*   By: hfouques <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/21 15:23:57 by hfouques          #+#    #+#             */
-/*   Updated: 2016/01/18 15:21:09 by gcourrie         ###   ########.fr       */
+/*   Updated: 2016/01/25 16:33:27 by gcourrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	creat_r(t_map *maplist, int i, int x)
 			return (0);
 		a++;
 	}
-	if (maplist->map[x] == '.' && maplist->map[x + size] == '.'
+	if (maplist->map[x + 1] == '.' && maplist->map[x + size] == '.'
 		&& maplist->map[x + size + 1] == '.' && maplist->map[x + size * 2 + 1]
 		&& (x / size) == ((x + 1) / size))
 	{
@@ -103,14 +103,14 @@ int	creat_s(t_map *maplist, int i, int x)
 			return (0);
 		a++;
 	}
-	if (maplist->map[x + 1] == '.' && maplist->map[x + size] == '.'
-		&& maplist->map[x + size + 1] == '.' && maplist->map[x + size * 2 + 1]
+	if (maplist->map[x] == '.' && maplist->map[x + size] == '.'
+		&& maplist->map[x + size + 1] == '.' && maplist->map[x + size * 2]
 		&& (x / size) == ((x + 1) / size))
 	{
-		maplist->map[x + 1] = i + 'A';
+		maplist->map[x] = i + 'A';
 		maplist->map[x + size] = i + 'A';
 		maplist->map[x + size + 1] = i + 'A';
-		maplist->map[x + size * 2 + 1] = i + 'A';
+		maplist->map[x + size * 2] = i + 'A';
 		return (1);
 	}
 	return (0);
